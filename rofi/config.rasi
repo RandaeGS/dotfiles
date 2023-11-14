@@ -1,0 +1,8 @@
+configuration {
+   modes: "combi";
+   font: "hack 10";
+   combi-modes: "filebrowser,drun";
+}
+//@theme "default"@theme "/home/randaegs/.local/share/rofi/themes/rounded-blue-dark.rasi"
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+@theme "/home/randaegs/.local/share/rofi/themes/rounded-blue-dark.rasi"

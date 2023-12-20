@@ -7,12 +7,11 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 # Defaults #
-mod = "mod4" #win key
+mod = "mod4"
 terminal = "kitty"
 browser = "firefox"
 
 keys = [
-
    # Switch between screens
    Key([mod], "period", lazy.next_screen(), desc="Move to the next screen"),
 
@@ -44,12 +43,12 @@ keys = [
    # Applications Shortcuts # 
    Key([mod], "Return", lazy.spawn(terminal), desc="Launch kitty terminal"),
    Key([mod], "b", lazy.spawn(browser), desc="Launch firefox"),
-   Key([mod], "x", lazy.spawn("kitty ranger"), desc="Launch ranger"),
+   Key([mod], "x", lazy.spawn("thunar"), desc="Launch thunar"),
    Key([mod], "Backspace", lazy.spawn("rofi -show combi"), desc="Lauch Rofi"),
 ]
 
-# Groups #
-groups = [Group(i) for i in "12345"]
+groups = [Group(i) for i in "123456"]
+
 
 for i in groups:
     keys.extend(
@@ -71,6 +70,7 @@ for i in groups:
         ]
     )
 
+
 # Layouts #
 layout_theme = {
    "border_width": 3,
@@ -83,25 +83,10 @@ layouts = [
    layout.Max()
 ]
 
-# Colors #
-#Pywal Colors
-colors = os.path.expanduser('~/.cache/wal/colors.json')
-colordict = json.load(open(colors))
-ColorZ=(colordict['colors']['color0'])
-ColorA=(colordict['colors']['color1'])
-ColorB=(colordict['colors']['color2'])
-ColorC=(colordict['colors']['color3'])
-ColorD=(colordict['colors']['color4'])
-ColorE=(colordict['colors']['color5'])
-ColorF=(colordict['colors']['color6'])
-ColorG=(colordict['colors']['color7'])
-ColorH=(colordict['colors']['color8'])
-ColorI=(colordict['colors']['color9'])
-
 # Bar #
 widget_defaults = dict(
-   font="JetBrainsMono Nerd Font medium",
-   fontsize=12,
+   font="Noto Sans",
+   fontsize=13,
    padding=3,
 )
 extension_defaults = widget_defaults.copy()

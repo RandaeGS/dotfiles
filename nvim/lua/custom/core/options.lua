@@ -1,6 +1,8 @@
 local o = vim.opt
 
 o.number = true
+o.pumheight = 8
+o.numberwidth = 3
 
 o.shiftwidth = 2
 o.tabstop = 2

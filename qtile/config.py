@@ -1,15 +1,17 @@
 # Imports #
 import os
 import subprocess
-import json
 from libqtile import qtile, bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Group, Key, Match, Screen
+from libqtile.layout.max import Max
 from libqtile.lazy import lazy
+import libqtile.layout
 
 # Defaults #
 mod = "mod4"
 terminal = "kitty"
-browser = "firefox"
+#browser = "firefox"
+browser = "one.ablaze.floorp"
 
 keys = [
    # Switch between screens
@@ -40,35 +42,39 @@ keys = [
    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc="Lower volume"),
    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc="Toggle volume"),
 
+   # Player Control #
+   Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play-Pause"),
+   Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Next"),
+   Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Previous"),
+
    # Applications Shortcuts # 
    Key([mod], "Return", lazy.spawn(terminal), desc="Launch kitty terminal"),
-   Key([mod], "b", lazy.spawn(browser), desc="Launch firefox"),
+   Key([mod], "b", lazy.spawn(browser), desc="Launch brower"),
    Key([mod], "x", lazy.spawn("thunar"), desc="Launch thunar"),
    Key([mod], "Backspace", lazy.spawn("rofi -show combi"), desc="Lauch Rofi"),
 ]
 
-groups = [Group(i) for i in "123456"]
-
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
-    keys.extend(
-        [
-            # mod1 + group number = switch to group
-            Key(
-               [mod],
-               i.name,
-               lazy.group[i.name].toscreen(),
-               desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + group number = switch to & move focused window to group
-            Key(
-               [mod, "shift"],
-               i.name,
-               lazy.window.togroup(i.name, switch_group=False),
-               desc="Switch window to group {}".format(i.name),
-            ),
-        ]
-    )
+   keys.extend(
+      [
+         # mod1 + group number = switch to group
+         Key(
+            [mod],
+            i.name,
+            lazy.group[i.name].toscreen(),
+            desc="Switch to group {}".format(i.name),
+         ),
+         # mod1 + shift + group number = switch to & move focused window to group
+         Key(
+            [mod, "shift"],
+            i.name,
+            lazy.window.togroup(i.name, switch_group=False),
+            desc="Switch window to group {}".format(i.name),
+         ),
+      ]
+   )
 
 
 # Layouts #
@@ -80,12 +86,12 @@ layout_theme = {
 
 layouts = [
    layout.MonadTall(**layout_theme),
-   layout.Max()
+   layout.Max(),
 ]
 
 # Bar #
 widget_defaults = dict(
-   font="Noto Sans",
+   font="Sans Mono",
    fontsize=13,
    padding=3,
 )
@@ -98,126 +104,126 @@ def toggleVolume():
    lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", desc="Toggle audio")
 
 screens = [
-	Screen(
-		top=bar.Bar(
-			[
-			widget.GroupBox(highlight_method="block"),
-			widget.WindowTabs(),
-         widget.TextBox(
-            text='',
-            background="#232136", #Va del color de la barra
-            foreground="#f6c177",
-            padding=0,
-            fontsize=42
-         ),
-			widget.TextBox(
-            text=' ',
-            background="#f6c177",
-            foreground="#191724",
-            padding=7
-         ),
-         widget.CurrentLayout(
-            background="#f6c177",
-            foreground="#191724"
-         ),
-         widget.TextBox(
-            text='',
-            background="#f6c177",
-            foreground="#9ccfd8",
-            padding=0,
-            fontsize=42
-         ),
-         widget.Volume(
-            background="#9ccfd8",
-            foreground="191724",
-            mouse_callbacks = {"Button1": volumeControl, "Button2": toggleVolume}
-         ),
-         widget.TextBox(
-            text='',
-            background="#9ccfd8",
-            foreground="#edf2fa",
-            padding=0,
-            fontsize=42
-         ),
-			widget.Clock(
-            background="#edf2fa",
-            foreground="#191724",
-            format="🕗 %H:%M - %d/%m %a",
-            update_interval = 60.0
-         ),
-			],
-			25,
+   Screen(
+      top=bar.Bar(
+         [
+            widget.GroupBox(highlight_method="block"),
+            widget.WindowTabs(),
+            widget.TextBox(
+               text='',
+               background="#232136", #Va del color de la barra
+               foreground="#f6c177",
+               padding=0,
+               fontsize=42
+            ),
+            widget.TextBox(
+               text=' ',
+               background="#f6c177",
+               foreground="#191724",
+               padding=7
+            ),
+            widget.CurrentLayout(
+               background="#f6c177",
+               foreground="#191724"
+            ),
+            widget.TextBox(
+               text='',
+               background="#f6c177",
+               foreground="#9ccfd8",
+               padding=0,
+               fontsize=42
+            ),
+            widget.Volume(
+               background="#9ccfd8",
+               foreground="191724",
+               mouse_callbacks = {"Button1": volumeControl, "Button2": toggleVolume}
+            ),
+            widget.TextBox(
+               text='',
+               background="#9ccfd8",
+               foreground="#edf2fa",
+               padding=0,
+               fontsize=42
+            ),
+            widget.Clock(
+               background="#edf2fa",
+               foreground="#191724",
+               format="🕗 %H:%M - %d/%m %a",
+               update_interval = 60.0
+            ),
+         ],
+         25,
          background="#232136",
-		),
-		# x11_drag_polling_rate = 60,
-	),
-	Screen(
-		top=bar.Bar(
-			[
-			widget.GroupBox(highlight_method="block"),
-			widget.WindowTabs(),
-			widget.Systray(),
-         widget.TextBox(
-            text='',
-            background="#232136", #Va del color de la barra
-            foreground="#f6c177",
-            padding=0,
-            fontsize=42
-         ),
-			widget.TextBox(
-            text=' ',
-            background="#f6c177",
-            foreground="#191724",
-            padding=7
-         ),
-         widget.CurrentLayout(
-            background="#f6c177",
-            foreground="#191724"
-         ),
-         widget.TextBox(
-            text='',
-            background="#f6c177",
-            foreground="#9ccfd8",
-            padding=0,
-            fontsize=42
-         ),
-			widget.Notify(default_timeout=5),
-         widget.Volume(
-            background="#9ccfd8",
-            foreground="191724",
-            fmt=" {}",
-            mouse_callbacks = {"Button1": volumeControl, "Button2": toggleVolume}
-         ),
-         widget.TextBox(
-            text='',
-            foreground="#eb6f92",
-            background="#9ccfd8",
-            padding=0,
-            fontsize=42
-         ),
-         widget.Memory(
-            format="{MemUsed: .0f}{mm}",
-            background="#eb6f92",
-            foreground="#191724",
-            interval=1.0
-         ),
-         widget.TextBox(
-            text='',
-            background="#eb6f92",
-            foreground="#edf2fa",
-            padding=0,
-            fontsize=42
-         ),
-			widget.Clock(
-            background="#edf2fa",
-            foreground="#191724",
-            format="\u23F1 %A %d/%m %H:%M",
-            update_interval = 60.0
-         )
-			],
-			25,
+      ),
+      # x11_drag_polling_rate = 60,
+   ),
+   Screen(
+      top=bar.Bar(
+         [
+            widget.GroupBox(highlight_method="block"),
+            widget.WindowTabs(),
+            widget.Systray(),
+            widget.TextBox(
+               text='',
+               background="#232136", #Va del color de la barra
+               foreground="#f6c177",
+               padding=0,
+               fontsize=42
+            ),
+            widget.TextBox(
+               text=' ',
+               background="#f6c177",
+               foreground="#191724",
+               padding=7
+            ),
+            widget.CurrentLayout(
+               background="#f6c177",
+               foreground="#191724"
+            ),
+            widget.TextBox(
+               text='',
+               background="#f6c177",
+               foreground="#9ccfd8",
+               padding=0,
+               fontsize=42
+            ),
+            widget.Notify(default_timeout=5),
+            widget.Volume(
+               background="#9ccfd8",
+               foreground="191724",
+               fmt=" {}",
+               mouse_callbacks = {"Button1": volumeControl, "Button2": toggleVolume}
+            ),
+            widget.TextBox(
+               text='',
+               foreground="#eb6f92",
+               background="#9ccfd8",
+               padding=0,
+               fontsize=42
+            ),
+            widget.Memory(
+               format="{MemUsed: .0f}{mm}",
+               background="#eb6f92",
+               foreground="#191724",
+               interval=1.0
+            ),
+            widget.TextBox(
+               text='',
+               background="#eb6f92",
+               foreground="#edf2fa",
+               padding=0,
+               fontsize=42
+            ),
+            widget.Clock(
+               background="#edf2fa",
+               foreground="#191724",
+               format="🕗 %A %d/%m %H:%M",
+               update_interval = 60.0
+            )
+         ],
+         25,
          background="#232136",
-		)
+      )
    )
 ]
 
@@ -227,18 +233,6 @@ follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = True # Cursor follows movement #
-floating_layout = layout.Floating(
-   float_rules=[
-      # Run the utility of `xprop` to see the wm class and name of an X client.
-      *layout.Floating.default_float_rules,
-      Match(wm_class="confirmreset"),  # gitk
-      Match(wm_class="makebranch"),  # gitk
-      Match(wm_class="maketag"),  # gitk
-      Match(wm_class="ssh-askpass"),  # ssh-askpass
-      Match(title="branchdialog"),  # gitk
-      Match(title="pinentry"),  # GPG key password entry
-   ]
-)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

@@ -51,7 +51,7 @@ keys = [
    Key([mod], "Return", lazy.spawn(terminal), desc="Launch kitty terminal"),
    Key([mod], "b", lazy.spawn(browser), desc="Launch brower"),
    Key([mod], "x", lazy.spawn("thunar"), desc="Launch thunar"),
-   Key([mod], "Backspace", lazy.spawn("rofi -show combi"), desc="Lauch Rofi"),
+   Key([mod], "Backspace", lazy.spawn("rofi -show run"), desc="Lauch Rofi"),
 ]
 
 groups = [Group(i) for i in "12345"]

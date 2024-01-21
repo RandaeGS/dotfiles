@@ -15,7 +15,9 @@ browser = "one.ablaze.floorp"
 
 keys = [
    # Switch between screens
-   Key([mod], "period", lazy.next_screen(), desc="Move to the next screen"),
+   Key([mod], "period", lazy.next_screen(), desc="Toggle screen"),
+   Key([mod], "d", lazy.screen.next_group(skip_empty=False), desc="Move to the next workspace"),
+   Key([mod], "a", lazy.screen.prev_group(skip_empty=False), desc="Move to the previous workspace"),
 
    # Switch between windows
    Key([mod], "j", lazy.layout.left(), desc="Move focus to left"),

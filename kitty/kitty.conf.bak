@@ -1,26 +1,26 @@
-font_family       fira code nerd font
+font_family       Noto Sans
 font_size 13.0
 adjust_line_height 120%
 disable_ligatures cursor
-shell_integration no-cursor
 
 allow_remote_control yes
 enable_audio_bell no
 copy_on_select yes
 url_style single
-cursor_shape block
 
 macos_option_as_alt left
 
-# Shortcuts #
 map cmd+c copy_to_clipboard
 map cmd+v paste_from_clipboard
-  
+map shift+insert paste_from_clipboard
+
+map ctrl+shift+. next_tab
+map ctrl+shift+, previous_tab
 map ctrl+shift+right move_tab_forward
 map ctrl+shift+left move_tab_backward
-map ctrl+backspace send_text all \x17
+map ctrl+shift+' set_tab_title
 
 # BEGIN_KITTY_THEME
-# Doom One
+# One Dark
 include current-theme.conf
 # END_KITTY_THEME

@@ -10,7 +10,7 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = true,
-        priority = 1000
+        priority = 1000,
     },
 
     -- Set colorscheme in this function

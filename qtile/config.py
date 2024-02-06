@@ -52,7 +52,7 @@ keys = [
    # Applications Shortcuts # 
    Key([mod], "Return", lazy.spawn(terminal), desc="Launch kitty terminal"),
    Key([mod], "b", lazy.spawn(browser), desc="Launch brower"),
-   Key([mod], "x", lazy.spawn("thunar"), desc="Launch thunar"),
+   Key([mod], "x", lazy.spawn("krusader"), desc="Launch thunar"),
    Key([mod], "Backspace", lazy.spawn("rofi -show run"), desc="Lauch Rofi"),
 ]
 

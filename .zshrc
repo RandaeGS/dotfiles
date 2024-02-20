@@ -1,5 +1,4 @@
 export ZSH=/usr/share/oh-my-zsh/
-#ZSH_THEME="agnoster"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -25,7 +24,7 @@ alias vi="nvim"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 
-
+export SUDO_EDITOR=/usr/bin/nvim
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

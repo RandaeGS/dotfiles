@@ -1,0 +1,42 @@
+{
+	"layer": "top",
+	"modules-left": ["hyprland/workspaces", "mpd"],
+	"modules-center": ["clock"],
+	"modules-right": ["tray", "network", "pulseaudio", "temperature", "cpu", "memory"],
+	"mpd": {
+		"tooltip": false,
+		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+		"format-disconnected": "ﳌ",
+		"format-stopped": "",
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        }
+	},
+	"pulseaudio": {
+		"tooltip": true,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
+		"on-click": "pavucontrol"
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": " {essid} {ipaddr}",
+		"format-ethernet": " {ipaddr}"
+	},
+	"cpu": {
+		"tooltip": false,
+		"format": "  {}%"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"tray": {
+		"icon-size": 21,
+		"spacing": 10
+	}
+}

@@ -24,12 +24,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, qtile, widget
+from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+import subprocess
+import os
 
 mod = "mod4"
+mod1 = "mod1"
 terminal = "kitty"
 browser = "one.ablaze.floorp"
 
@@ -38,7 +41,10 @@ keys = [
     # App keymaps
     Key([mod], "b", lazy.spawn(browser), desc="Open browser"),
     Key([mod], "e", lazy.spawn("thunar"), desc="Open file browser"),
-
+    Key([mod], "period", lazy.next_screen(), desc='Next monitor'),
+    Key([mod1], "space", lazy.spawn("rofi -show drun"), desc='Open rofi'),
+    Key([mod], "a", lazy.screen.prev_group(), desc='Move to left'),
+    Key([mod], "d", lazy.screen.next_group(), desc='Move to right'),
 
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -153,8 +159,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(disable_drag = True,),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -163,13 +168,11 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.CurrentLayout(),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -183,8 +186,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(disable_drag = True,),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -193,13 +195,10 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                widget.CurrentLayout(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -211,6 +210,10 @@ screens = [
         # x11_drag_polling_rate = 60,
     ),
 ]
+
+@hook.subscribe.startup_once
+def autostart_once():
+    subprocess.run('/home/randaegs/.config/qtile/autostart.sh')
 
 # Drag floating layouts.
 mouse = [
@@ -240,6 +243,7 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+cursor_warp = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?

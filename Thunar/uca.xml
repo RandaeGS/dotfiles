@@ -4,8 +4,8 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
-	<unique-id>1723398962558384-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<unique-id>1731013682896393-1</unique-id>
+	<command>kitty .</command>
 	<description>Example for a custom action</description>
 	<range></range>
 	<patterns>*</patterns>

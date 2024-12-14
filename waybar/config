@@ -4,7 +4,7 @@
 	"modules-center": ["clock"],
 	"modules-right": ["tray", "network", "pulseaudio", "temperature", "cpu", "memory"],
 	"mpd": {
-		"tooltip": false,
+		"tooltip": true,
 		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
 		"format-disconnected": "ﳌ",
 		"format-stopped": "",
@@ -58,7 +58,7 @@
 	},
 	"memory": {
 		"tooltip": false,
-		"format": " {}%"
+		"format": "  {}%"
 	},
 	"tray": {
 		"icon-size": 21,

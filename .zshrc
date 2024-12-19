@@ -20,7 +20,7 @@ eval "$(zoxide init --cmd cd zsh)"
 export PATH="/home/randaegs/Documents/flutter/bin:$PATH"
 export PATH="/home/randaegs/Documents/android-studio/bin:$PATH"
 export PATH="/home/randaegs/go/bin:$PATH"
-export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+export BROWSER=zen-browser
 
 # Conda lazy loading
 conda_init() {

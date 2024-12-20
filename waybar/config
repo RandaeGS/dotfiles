@@ -2,7 +2,17 @@
 	"layer": "top",
 	"modules-left": ["hyprland/workspaces", "mpd"],
 	"modules-center": ["clock"],
-	"modules-right": ["tray", "network", "pulseaudio", "temperature", "cpu", "memory"],
+	"modules-right": ["tray", "network", "pulseaudio", "temperature", "cpu", "battery"],
+	"battery": {
+		"interval": 60,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-icons": ["", "", "", "", ""],
+		"max-length": 25
+	},
 	"mpd": {
 		"tooltip": true,
 		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
@@ -49,16 +59,12 @@
 	},
 	"network": {
 		"tooltip": false,
-		"format-wifi": " {essid} {ipaddr}",
+		"format-wifi": "  {essid} {ipaddr}",
 		"format-ethernet": " {ipaddr}"
 	},
 	"cpu": {
 		"tooltip": false,
 		"format": "  {}%"
-	},
-	"memory": {
-		"tooltip": false,
-		"format": "  {}%"
 	},
 	"tray": {
 		"icon-size": 21,

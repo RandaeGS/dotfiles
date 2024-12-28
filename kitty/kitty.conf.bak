@@ -1,5 +1,5 @@
 font_family       fira code nerd font
-font_size 13.0
+font_size 15.0
 adjust_line_height 120%
 disable_ligatures cursor
 shell_integration no-cursor
@@ -9,7 +9,8 @@ enable_audio_bell no
 copy_on_select yes
 url_style single
 cursor_shape block
-background_opacity 0.8
+background_opacity 0.95
+background_blur 2
 
 macos_option_as_alt left
 
@@ -22,6 +23,6 @@ map ctrl+shift+left move_tab_backward
 map ctrl+backspace send_text all \x17
 
 # BEGIN_KITTY_THEME
-# Alucard
+# Catppuccin-Macchiato
 include current-theme.conf
 # END_KITTY_THEME

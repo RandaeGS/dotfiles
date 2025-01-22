@@ -798,3 +798,6 @@ require('lazy').setup({
 
 -- Colorscheme configuration
 vim.cmd.colorscheme 'cyberdream'
+
+-- Colorscheme configuration
+vim.cmd.colorscheme('cyberdream')

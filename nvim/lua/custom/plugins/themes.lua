@@ -54,18 +54,16 @@ return {
     },
   },
 
-  { 'rose-pine/neovim', name = 'rose-pine', lazy = true },
+  { 'rose-pine/neovim', name = 'rose-pine' },
 
   {
     'scottmckendry/cyberdream.nvim',
-    lazy = true,
   },
 
-  { 'catppuccin/nvim', name = 'catppuccin', lazy = true },
+  { 'catppuccin/nvim', name = 'catppuccin' },
 
   {
     'folke/tokyonight.nvim',
-    lazy = true,
     opts = {},
   },
 }

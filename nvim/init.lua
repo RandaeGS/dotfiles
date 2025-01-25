@@ -154,14 +154,15 @@ require('lazy').setup({
 
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    lazy = true,
+    lazy = false,
     opts = {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        add = { text = '┃' },
+        change = { text = '┃' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+        untracked = { text = '┆' },
       },
     },
   },
@@ -800,4 +801,5 @@ require('lazy').setup({
 vim.cmd.colorscheme 'cyberdream'
 
 -- Colorscheme configuration
-vim.cmd.colorscheme('cyberdream')
+vim.cmd.colorscheme 'cyberdream'
+

@@ -513,6 +513,11 @@ require('lazy').setup({
         'pyright',
         'clangd',
         'black',
+        'bash-language-server',
+        'eslint_lsp',
+        'tailwindcss-language-server',
+        'typescript-language-server',
+        'vue-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -761,7 +766,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
@@ -796,10 +801,3 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
--- Colorscheme configuration
-vim.cmd.colorscheme 'cyberdream'
-
--- Colorscheme configuration
-vim.cmd.colorscheme 'cyberdream'
-

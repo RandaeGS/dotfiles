@@ -501,6 +501,15 @@ require('lazy').setup({
             },
           },
         },
+
+        volar = {
+          filetypes = { 'vue' },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        },
       }
 
       require('mason').setup()
@@ -514,7 +523,7 @@ require('lazy').setup({
         'clangd',
         'black',
         'bash-language-server',
-        'eslint_lsp',
+        'eslint',
         'tailwindcss-language-server',
         'typescript-language-server',
         'vue-language-server',
@@ -801,3 +810,7 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Colorscheme configuration
+vim.cmd.colorscheme 'cyberdream'
+

@@ -574,7 +574,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'black', 'ruff_format', stop_after_first = true },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'prettier', 'prettierd', stop_after_first = true },
       },
     },
   },
@@ -813,4 +813,3 @@ require('lazy').setup({
 
 -- Colorscheme configuration
 vim.cmd.colorscheme 'cyberdream'
-

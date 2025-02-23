@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.pumheight = 15
 
 vim.g.have_nerd_font = true
 vim.opt.mouse = 'a'
@@ -756,4 +757,3 @@ require('lazy').setup({
 
 -- Colorscheme configuration
 vim.cmd.colorscheme 'tokyonight-night'
-

@@ -755,4 +755,5 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Colorscheme configuration
-vim.cmd.colorscheme('tokyonight-night')
+vim.cmd.colorscheme 'tokyonight-night'
+

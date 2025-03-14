@@ -495,7 +495,13 @@ require('lazy').setup({
             },
           },
         },
-
+        require('lspconfig').gopls.setup {
+          settings = {
+            gopls = {
+              gofumpt = true,
+            },
+          },
+        },
         volar = {
           filetypes = { 'vue' },
           init_options = {
@@ -571,6 +577,7 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
+        go = { 'gopls' },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         javascript = { 'prettier' },

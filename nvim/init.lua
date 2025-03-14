@@ -574,8 +574,10 @@ require('lazy').setup({
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         javascript = { 'prettier' },
+        css = { 'prettier' },
         vue = { 'prettier' },
       },
+      formatters = {},
     },
   },
 
@@ -757,3 +759,9 @@ require('lazy').setup({
 
 -- Colorscheme configuration
 vim.cmd.colorscheme 'tokyonight-night'
+
+-- Colorscheme configuration
+vim.cmd.colorscheme 'tokyonight-night'
+
+-- Colorscheme configuration
+vim.cmd.colorscheme('cyberdream')

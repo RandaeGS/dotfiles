@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Fuzzel Polkit Agent
+Comment=Start the Polkit Agent using Fuzzel for prompting
+Exec=fuzzel-polkit-agent
+Terminal=false
+Type=Application
+NoDisplay=true

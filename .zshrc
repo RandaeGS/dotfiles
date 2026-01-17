@@ -30,6 +30,7 @@ export PATH=$PATH:$HOME/go/bin
 
 # Aliases
 alias install="sudo pacman -S --needed"
+alias update="yay"
 alias vi="nvim"
 alias vim="nvim"
 

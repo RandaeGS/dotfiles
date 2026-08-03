@@ -75,18 +75,14 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "HDMI-A-1" {
-    mode "1920x1080@60"
+output "Acer Technologies X27U Z2 15460012E3900" {
+    mode "2560x1440@280.002"
     scale 1
-    transform "normal"
-    position x=-1920 y=0
 }
 
-output "DP-1" {
-    mode "1920x1080@164.917"
+output "LG Electronics LG TV SSCR2 0x01010101" {
+    mode "3840x2160@60.000"
     scale 1
-    transform "normal"
-    position x=0 y=0
 }
 
 
@@ -253,8 +249,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "qutebrowser"
 spawn-at-startup "~/.config/niri/scripts/fuzzel-polkit-agent/fuzzel-polkit-agent"
-spawn-at-startup "steam"
-spawn-at-startup "gsettings set org.gnome.desktop.interface gtk-theme Qogir-Dark"
+spawn-at-startup "steam -silent"
 
 hotkey-overlay {
     skip-at-startup
@@ -546,5 +541,5 @@ binds {
     Mod+Shift+Q { quit; }
 
     // Powers off the monitors. 
-    Mod+Shift+P { power-off-monitors; }
+    //Mod+Shift+P { power-off-monitors; }
 }
